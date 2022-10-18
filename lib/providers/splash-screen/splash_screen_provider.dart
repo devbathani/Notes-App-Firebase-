@@ -5,5 +5,6 @@ class SplashScreenProvider extends ChangeNotifier {
   navigatetoAuthScreen(BuildContext context) async {
     await Future.delayed(const Duration(milliseconds: 2000), () {});
     AutoRouter.of(context).pushNamed('auth');
+    notifyListeners();
   }
 }

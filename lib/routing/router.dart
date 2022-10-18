@@ -1,6 +1,7 @@
 // Package imports:
 import 'package:auto_route/auto_route.dart';
 import 'package:notes_app/presentation/auth-screen/auth_screen.dart';
+import 'package:notes_app/presentation/home-screen/home_screen.dart';
 import 'package:notes_app/presentation/splash-screen/splash_screen.dart';
 
 @CustomAutoRouter(
@@ -9,6 +10,7 @@ import 'package:notes_app/presentation/splash-screen/splash_screen.dart';
   routes: <AutoRoute>[
     CustomRoute(page: SplashScreen, initial: true, path: 'splash'),
     CustomRoute(page: AuthScreen, path: 'auth'),
+    CustomRoute(page: HomeScreen, path: 'home'),
   ],
 )
 class $AppRouter {}

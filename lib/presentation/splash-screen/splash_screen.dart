@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes_app/gen/assets.gen.dart';
-import 'package:notes_app/providers/splash-screen/splash_screen.dart';
+import 'package:notes_app/providers/splash-screen/splash_screen_provider.dart';
 import 'package:notes_app/utils/text_style.dart';
 import 'package:notes_app/utils/titles.dart';
 import 'package:provider/provider.dart';
