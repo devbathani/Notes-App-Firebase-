@@ -20,6 +20,6 @@ class AuthScreenProvider extends ChangeNotifier {
     BuildContext context,
     String smsCode,
   ) {
-    return AuthScreenFirebase().signIn(verifyingCode, smsCode,context);
+    return AuthScreenFirebase().signIn(verifyingCode, smsCode, context);
   }
 }

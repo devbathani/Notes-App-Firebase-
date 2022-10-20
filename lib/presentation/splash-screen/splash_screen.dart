@@ -22,6 +22,7 @@ class SplashScreen extends StatelessWidget {
             image: AssetImage(
               Assets.backgroundImage.path,
             ),
+            fit: BoxFit.cover,
           ),
         ),
         child: Column(

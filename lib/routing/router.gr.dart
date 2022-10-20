@@ -35,7 +35,7 @@ class AppRouter extends _i4.RootStackRouter {
     AuthScreen.name: (routeData) {
       return _i4.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i2.AuthScreen(),
+        child: _i2.AuthScreen(),
         opaque: true,
         barrierDismissible: false,
       );

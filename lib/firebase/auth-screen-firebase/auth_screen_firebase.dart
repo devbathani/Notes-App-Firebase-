@@ -11,6 +11,7 @@ class AuthScreenFirebase {
     BuildContext context,
     String phoneNumber,
   ) async {
+    log("Phone number : $phoneNumber");
     await firebaseAuth.verifyPhoneNumber(
       phoneNumber: '+91$phoneNumber',
       verificationCompleted: (phoneCredential) async {
@@ -31,7 +32,7 @@ class AuthScreenFirebase {
       codeAutoRetrievalTimeout: (verificationID) {
         verifyingCode = verificationID;
       },
-      timeout: const Duration(seconds: 60),
+      timeout: const Duration(seconds: 120),
     );
     return verifyingCode;
   }

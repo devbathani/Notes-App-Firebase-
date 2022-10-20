@@ -9,16 +9,15 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 
 class AuthScreen extends StatelessWidget {
-  const AuthScreen({Key? key}) : super(key: key);
-
+  AuthScreen({Key? key}) : super(key: key);
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Consumer<AuthScreenProvider>(
         builder: (context, authState, _) {
-          TextEditingController otpController = TextEditingController();
-          TextEditingController phoneNumberController = TextEditingController();
           return SingleChildScrollView(
             child: Container(
               height: MediaQuery.of(context).size.height,
@@ -26,6 +25,7 @@ class AuthScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(Assets.authBg.path),
+                  fit: BoxFit.cover,
                 ),
               ),
               child: Column(
@@ -69,12 +69,12 @@ class AuthScreen extends StatelessWidget {
                     ]),
                     child: TextFormField(
                       keyboardType: TextInputType.number,
-                      controller: authState.phoneNumberController,
-                      validator: (value) {
-                        if (value!.length == 10) {
+                      controller: phoneController,
+                      onChanged: (value) {
+                        if (value.length == 10) {
+                          authState.phoneNumberController.text = value;
                           FocusScope.of(context).nextFocus();
                         }
-                        return null;
                       },
                       style: whiteSubHeading.copyWith(
                         color: Colors.black54,
@@ -82,6 +82,7 @@ class AuthScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         fillColor: Colors.white,
                         filled: true,
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
                               color: Colors.transparent, width: 1),
@@ -106,10 +107,11 @@ class AuthScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30.w),
                     child: PinCodeTextField(
+                      backgroundColor: Colors.white,
                       length: 6,
                       obscureText: false,
                       enablePinAutofill: true,
-                      controller: authState.otpController,
+                      controller: otpController,
                       animationType: AnimationType.fade,
                       errorAnimationDuration: 300,
                       animationDuration: const Duration(milliseconds: 300),
@@ -118,20 +120,20 @@ class AuthScreen extends StatelessWidget {
                       },
                       keyboardType: TextInputType.number,
                       appContext: context,
+                      autoDisposeControllers: false,
                       pinTheme: PinTheme(
                         shape: PinCodeFieldShape.box,
                         fieldOuterPadding: const EdgeInsets.only(left: 2),
                         borderRadius: BorderRadius.circular(5),
-                        selectedColor: Colors.white,
+                        selectedColor: Colors.black,
                         fieldHeight: 40.h,
                         fieldWidth: 45.w,
-                        inactiveFillColor: Colors.white,
-                        activeFillColor: Colors.white,
-                        activeColor: Colors.white,
-                        inactiveColor: Colors.white,
-                        disabledColor: Colors.white,
+                        inactiveFillColor: Colors.black,
+                        activeFillColor: Colors.black,
+                        activeColor: Colors.black,
+                        inactiveColor: Colors.black,
+                        disabledColor: Colors.black,
                       ),
-                      cursorColor: const Color(0xff45AD7E),
                       textStyle: whiteSubHeading.copyWith(
                         color: Colors.black,
                         fontSize: 15.sp,
